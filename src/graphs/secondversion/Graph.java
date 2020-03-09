@@ -22,6 +22,7 @@ public class Graph<V> {
 	 * @param oriented boolean value specifying the graph orientation: true if
 	 *                 oriented, false if not
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Graph(boolean oriented) {
 		this.adjs = new HashMap();
 		this.weights = new WeightTable();
@@ -33,6 +34,7 @@ public class Graph<V> {
 	 *
 	 * @param vertexName the label of the vertex to add
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addVertex(V vertexName) {
 		adjs.putIfAbsent(vertexName, new LinkedList());
 	}
@@ -138,6 +140,7 @@ public class Graph<V> {
 	 *
 	 * @return a list of all graph vertexes
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public LinkedList<V> getAllVertex() {
 		return new LinkedList(adjs.keySet());
 	}
@@ -148,6 +151,7 @@ public class Graph<V> {
 	 * @param vertex the label of the vertex
 	 * @return a list of all connections related to the vertex, passed as param
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public LinkedList<V> getVertexAdjs(V vertex) {
 		LinkedList<V> out = new LinkedList();
 		for (V v : adjs.get(vertex)) {
@@ -306,6 +310,7 @@ public class Graph<V> {
 		/**
 		 * Simple constructor
 		 */
+		@SuppressWarnings({ "rawtypes", "unchecked" })
 		public WeightTable() {
 			table = new HashMap();
 			weight = 0.0;
@@ -318,6 +323,7 @@ public class Graph<V> {
 		 * @param c   the column label
 		 * @param val the double value to set
 		 */
+		@SuppressWarnings({ "rawtypes", "unchecked" })
 		public void set(V r, V c, Double val) {
 			if (!table.containsKey(r)) {
 				table.put(r, new HashMap());
