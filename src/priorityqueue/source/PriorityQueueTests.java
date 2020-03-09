@@ -2,7 +2,6 @@ package priorityqueue.source;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.NoSuchElementException;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -25,8 +24,10 @@ public class PriorityQueueTests {
 
 	private Integer i1, i2, i3, i4, i5, i6;
 	private String s1, s2, s3, s4, s5, s6;
+	@SuppressWarnings("rawtypes")
 	private PriorityQueue.QueueElement q1, q2, q3, q4, q5, q6;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Before
 	public void setUp() {
 		s1 = "aquila";
@@ -59,7 +60,7 @@ public class PriorityQueueTests {
 		pqi.insert(s1, i1);
 		pqi.insert(s6, i6);
 		String[] expectedArray = { s6, s4, s5, s2, s1, s3 };
-		ArrayList<String> actualArray = new ArrayList();
+		ArrayList<String> actualArray = new ArrayList<String>();
 		for (int i = 0; i < pqi.getHeap().size(); i++)
 			actualArray.add(pqi.getHeap().get(i).getElement());
 		assertArrayEquals(expectedArray, actualArray.toArray());
@@ -74,16 +75,17 @@ public class PriorityQueueTests {
 		pqi.insertRec(s1, i1);
 		pqi.insertRec(s6, i6);
 		String[] expectedArray = { s6, s4, s5, s2, s1, s3 };
-		ArrayList<String> actualArray = new ArrayList();
+		ArrayList<String> actualArray = new ArrayList<String>();
 		for (int i = 0; i < pqi.getHeap().size(); i++)
 			actualArray.add(pqi.getHeap().get(i).getElement());
 		assertArrayEquals(expectedArray, actualArray.toArray());
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test
 	public void testInsertRec_protected() {
-		ArrayList<String> strings = new ArrayList();
-		ArrayList<Integer> priorities = new ArrayList();
+		ArrayList<String> strings = new ArrayList<String>();
+		ArrayList<Integer> priorities = new ArrayList<Integer>();
 		strings.add(s3);
 		strings.add(s2);
 		strings.add(s4);
@@ -100,7 +102,7 @@ public class PriorityQueueTests {
 		int index = priorities.size() - 1;
 		pqi.insertRec(index);
 		String[] expectedArray = { s6, s5, s4, s2, s1, s3 };
-		ArrayList<String> actualArray = new ArrayList();
+		ArrayList<String> actualArray = new ArrayList<String>();
 		for (int i = 0; i < pqi.getHeap().size(); i++)
 			actualArray.add(pqi.getHeap().get(i).getElement());
 		assertArrayEquals(expectedArray, actualArray.toArray());
@@ -161,7 +163,7 @@ public class PriorityQueueTests {
 		pqi.insertRec(s4, i4);
 		pqi.extract();
 		String[] expectedArray = { s3, s2 };
-		ArrayList<String> actualArray = new ArrayList();
+		ArrayList<String> actualArray = new ArrayList<String>();
 		for (int i = 0; i < pqi.getHeap().size(); i++)
 			actualArray.add(pqi.getHeap().get(i).getElement());
 		assertArrayEquals(expectedArray, actualArray.toArray());
@@ -174,12 +176,13 @@ public class PriorityQueueTests {
 		pqi.insertRec(s4, i4);
 		pqi.extractRec();
 		String[] expectedArray = { s3, s2 };
-		ArrayList<String> actualArray = new ArrayList();
+		ArrayList<String> actualArray = new ArrayList<String>();
 		for (int i = 0; i < pqi.getHeap().size(); i++)
 			actualArray.add(pqi.getHeap().get(i).getElement());
 		assertArrayEquals(expectedArray, actualArray.toArray());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testHeapify() {
 		pqi.getHeap().add(q3);
@@ -192,7 +195,7 @@ public class PriorityQueueTests {
 			pqi.heapify(i);
 		}
 		String[] expectedArray = { s6, s5, s4, s2, s1, s3 };
-		ArrayList<String> actualArray = new ArrayList();
+		ArrayList<String> actualArray = new ArrayList<String>();
 		for (int i = 0; i < pqi.getHeap().size(); i++)
 			actualArray.add(pqi.getHeap().get(i).getElement());
 		assertArrayEquals(expectedArray, actualArray.toArray());
@@ -256,12 +259,13 @@ public class PriorityQueueTests {
 		pqi.insert(s4, i4);
 		pqi.swap(0, 1);
 		String[] expectedArray = { s1, s4 };
-		ArrayList<String> actualArray = new ArrayList();
+		ArrayList<String> actualArray = new ArrayList<String>();
 		for (int i = 0; i < pqi.getHeap().size(); i++)
 			actualArray.add(pqi.getHeap().get(i).getElement());
 		assertArrayEquals(expectedArray, actualArray.toArray());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testMax() {
 		int valueExpected = 1;
