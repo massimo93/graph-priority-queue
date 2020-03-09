@@ -23,6 +23,7 @@ public class PriorityQueue<T, P> {
 	 * @param comparator a comparator that implements the priority precedence
 	 *                   relation between the heap structure elements
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PriorityQueue(Comparator<P> comparator) {
 		this.c = comparator;
 		this.heap = new ArrayList();
@@ -40,6 +41,7 @@ public class PriorityQueue<T, P> {
 	 * @param comparator a comparator that implements the priority precedence
 	 *                   relation between the heap structure elements
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PriorityQueue(ArrayList<T> array, ArrayList<P> priorities, Comparator<P> comparator) {
 		this.c = comparator;
 		this.heap = new ArrayList();
