@@ -25,6 +25,7 @@ public class PrimUsageV1 {
 	 * @param args the command line arguments
 	 * @throws Exception
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) throws Exception {
 
 		if (args.length < 1)
@@ -47,6 +48,7 @@ public class PrimUsageV1 {
 	 * @param g
 	 * @throws IOException
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static void loadAllEntries(String filepath, Graph g) throws IOException {
 		System.out.println("Loading entries from " + filepath + " file...");
 		Path inputFilePath = Paths.get(filepath);
