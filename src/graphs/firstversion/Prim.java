@@ -29,6 +29,7 @@ public class Prim {
 	 * @throws NoSuchElementException        if the starting vertex is not contained
 	 *                                       in the graph
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static <V> Graph mstPrim(Graph<V> g, V startVertex, Comparator comparator)
 			throws IllegalArgumentException, UnsupportedOperationException, NoSuchElementException {
 
@@ -42,7 +43,7 @@ public class Prim {
 		LinkedList<V> allVertex = g.getAllVertex();
 		Graph<V> result = new Graph(false);
 
-		// inializing the priority queue
+		// initializing the priority queue
 		Double[] prioritiesArr = new Double[allVertex.size()];
 		Arrays.fill(prioritiesArr, Double.MAX_VALUE);
 		ArrayList<Double> priorities = new ArrayList(Arrays.asList(prioritiesArr));

@@ -25,9 +25,12 @@ public class GraphTests {
 
 	private String city1, city2, city3, city4, city5, city6, city7;
 	private String[] cities;
+	@SuppressWarnings("rawtypes")
 	private Graph orientedGraph;
+	@SuppressWarnings("rawtypes")
 	private Graph notOrientedGraph, notOrientedConnectedGraph, orientedConnectedGraph, emptyNotOrientedGraph;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Before
 	public void setUp() {
 		city1 = "Londra";
@@ -66,6 +69,7 @@ public class GraphTests {
 		orientedGraph = new Graph(true);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testAddVertex_Fail() {
 		String addedCity = "Roma";
@@ -75,6 +79,7 @@ public class GraphTests {
 		assertEquals(expectedSize, actualSize);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testAddVertex_Success() {
 		notOrientedGraph.addVertex("Berlino");
@@ -83,41 +88,49 @@ public class GraphTests {
 		assertEquals(expectedSize, actualSize);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test(expected = NoSuchElementException.class)
 	public void testAddEdge_Fail() throws NoSuchElementException {
 		notOrientedGraph.addEdge("Berlino", "Parigi", 10);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testAddEdge_Success() {
 		notOrientedGraph.addEdge("Manchester", "Milano", 5);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testAddEdgeForced() {
 		notOrientedGraph.addEdgeForced("Berlino", "Madrid", 10);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test(expected = NoSuchElementException.class)
 	public void testRemoveVertex_Fail() {
 		notOrientedGraph.removeVertex("Berlino");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testRemoveVertex_Success() {
 		notOrientedGraph.removeVertex("Manchester");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test(expected = NoSuchElementException.class)
 	public void testRemoveEdge_Fail_FirstVertex() throws NoSuchElementException {
 		notOrientedGraph.removeEdge("Berlino", "Parigi");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test(expected = NoSuchElementException.class)
 	public void testRemoveEdge_Fail_SecondVertex() throws NoSuchElementException {
 		notOrientedGraph.removeEdge("Parigi", "Berlino");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testRemoveEdge_Success() {
 		notOrientedGraph.addEdgeForced("Londra", "New York", 10);
@@ -139,6 +152,7 @@ public class GraphTests {
 		assertEquals(expectedNumVertex, actualNumVertex);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testEdgeCount() {
 		notOrientedGraph.addEdgeForced("Londra", "New York", 20);
@@ -176,18 +190,21 @@ public class GraphTests {
 		assertEquals(true, orientedGraph.isOriented());
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testContainsVertex_False() {
 		String city = "Berlino";
 		assertEquals(false, notOrientedGraph.containsVertex(city));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testContainsVertex_True() {
 		String city = "Manchester";
 		assertEquals(true, notOrientedGraph.containsVertex(city));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testContainsEdge_False_NotOriented() {
 		String firstCity = "Roma";
@@ -195,6 +212,7 @@ public class GraphTests {
 		assertEquals(false, notOrientedConnectedGraph.containsEdge(firstCity, secondCity));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testContainsEdge_True_NotOriented() {
 		String firstCity = "Dubai";
@@ -202,6 +220,7 @@ public class GraphTests {
 		assertEquals(true, notOrientedConnectedGraph.containsEdge(firstCity, secondCity));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testContainsEdge_False_Oriented() {
 		String firstCity = "Dubai";
@@ -209,6 +228,7 @@ public class GraphTests {
 		assertEquals(false, orientedConnectedGraph.containsEdge(firstCity, secondCity));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testContainsEdge_True_Oriented() {
 		String firstCity = "Roma";
@@ -216,22 +236,26 @@ public class GraphTests {
 		assertEquals(true, orientedConnectedGraph.containsEdge(firstCity, secondCity));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test(expected = IllegalArgumentException.class)
 	public void testPrim__Fail_NullGraph() {
 		Graph nullGraph = null;
 		Prim.mstPrim(nullGraph, "Roma", new MinHeapComparator());
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test(expected = UnsupportedOperationException.class)
 	public void testPrim_Fail_OrientedGraph() {
 		Prim.mstPrim(orientedGraph, "Roma", new MinHeapComparator());
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test(expected = NoSuchElementException.class)
 	public void testPrim_Fail_StartingVertexNotFound() {
 		Prim.mstPrim(notOrientedConnectedGraph, "Redmond", new MinHeapComparator());
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test(expected = UnsupportedOperationException.class)
 	public void testPrim_Fail_NegativeWeights() {
 		Graph negativeWeightsGraph = new Graph(false);
@@ -240,6 +264,7 @@ public class GraphTests {
 		Prim.mstPrim(negativeWeightsGraph, "Roma", new MinHeapComparator());
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test
 	public void testPrim_Success() {
 		Graph mstGraph = Prim.mstPrim(notOrientedConnectedGraph, "Roma", new MinHeapComparator());

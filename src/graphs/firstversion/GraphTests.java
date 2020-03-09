@@ -216,22 +216,26 @@ public class GraphTests {
 		assertEquals(true, orientedConnectedGraph.containsEdge(firstCity, secondCity));
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Test(expected = IllegalArgumentException.class)
 	public void testPrim__Fail_NullGraph() {
 		Graph<String> nullGraph = null;
 		Prim.mstPrim(nullGraph, "Roma", new MinHeapComparator());
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Test(expected = UnsupportedOperationException.class)
 	public void testPrim_Fail_OrientedGraph() {
 		Prim.mstPrim(orientedGraph, "Roma", new MinHeapComparator());
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Test(expected = NoSuchElementException.class)
 	public void testPrim_Fail_StartingVertexNotFound() {
 		Prim.mstPrim(notOrientedConnectedGraph, "Redmond", new MinHeapComparator());
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Test(expected = UnsupportedOperationException.class)
 	public void testPrim_Fail_NegativeWeights() {
 		Graph<String> negativeWeightsGraph = new Graph<String>(false);
@@ -240,6 +244,7 @@ public class GraphTests {
 		Prim.mstPrim(negativeWeightsGraph, "Roma", new MinHeapComparator());
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Test
 	public void testPrim_Success() {
 		Graph mstGraph = Prim.mstPrim(notOrientedConnectedGraph, "Roma", new MinHeapComparator());
