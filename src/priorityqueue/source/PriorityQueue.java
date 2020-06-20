@@ -322,7 +322,7 @@ public class PriorityQueue<T, P> {
 	}
 
 	/**
-	 * Inner class representing the a generic type of elements accepted by the heap
+	 * Inner class representing a generic type of elements accepted by the heap
 	 * structure of the priority queue
 	 */
 	protected class QueueElement {
@@ -331,7 +331,7 @@ public class PriorityQueue<T, P> {
 		private P prior;
 
 		/**
-		 * Constructor accepting a generic element and its priority, also generic
+		 * Constructor accepting a generic element and its generic priority
 		 * 
 		 * @param element  a generic element that can be inserted in the priority queue
 		 *                 heap structure
