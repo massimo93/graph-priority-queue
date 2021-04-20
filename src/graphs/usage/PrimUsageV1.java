@@ -11,11 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
 
-/**
- * Main class set to run the first version of the Prim algorithm NB: it needs to
- * be executed passing the italian_dist_graph.csv file path as command line
- * argument.
- */
 public class PrimUsageV1 {
 
 	private static final Charset ENCODING = StandardCharsets.UTF_8;
@@ -34,7 +29,7 @@ public class PrimUsageV1 {
 		loadAllEntries(args[0], g);
 		System.out.println("Graph created");
 
-		Graph mst = Prim.mstPrim(g, "abbadia", new MinComparator());
+		Graph mst = Prim.mstPrim(g, "A", new MinComparator());
 		System.out.println("Vertex count: " + mst.vertexCount());
 		System.out.println("Edge count: " + mst.edgeCount());
 		DecimalFormat formatter = new DecimalFormat("#0.000");
